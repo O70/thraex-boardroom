@@ -1,4 +1,5 @@
 import router from './router'
+import verify from './router/verify'
 import store from './store'
 import { Message } from 'element-ui'
 import NProgress from 'nprogress'
@@ -11,6 +12,7 @@ NProgress.configure({ showSpinner: false })
 const whiteList = ['/login']
 
 router.beforeEach(async(to, from, next) => {
+  next = verify(to, from, next)
   NProgress.start()
 
   document.title = getPageTitle(to.meta.title)
