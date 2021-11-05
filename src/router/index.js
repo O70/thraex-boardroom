@@ -19,7 +19,8 @@ export const constantRoutes = [
   },
 
   {
-    path: '/verify',
+    path: '/router/verify',
+    name: 'RouterVerify',
     component: () => import('./verify/index'),
     hidden: true
   },

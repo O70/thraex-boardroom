@@ -11,7 +11,6 @@ NProgress.configure({ showSpinner: false })
 const whiteList = ['/login']
 
 router.beforeEach(async(to, from, next) => {
-  console.log('Permission...')
   NProgress.start()
 
   document.title = getPageTitle(to.meta.title)
@@ -32,9 +31,7 @@ router.beforeEach(async(to, from, next) => {
           // get user info
           await store.dispatch('user/getInfo')
 
-          console.log('Permission...', 1)
           next()
-          console.log('Permission...', 2)
         } catch (error) {
           // remove token and go to login page to re-login
           await store.dispatch('user/resetToken')
