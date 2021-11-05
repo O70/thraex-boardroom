@@ -34,6 +34,7 @@ export default [
     path: '/boardroom',
     component: Layout,
     props: route => ({
+      verify: true,
       showSidebar: route.meta.sidebar,
       showHeader: route.meta.header
     }),
