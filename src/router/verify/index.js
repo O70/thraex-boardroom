@@ -1,36 +1,4 @@
-// import store from '@/store'
-// console.debug(1, store)
-/* store.registerModule('verify', {
-  state: {
-    code: null
-  },
-  mutations: {
-    SET_CODE: (state, code) => (state.code = code)
-  },
-  actions: {
-    set: ({ commit }, code) => commit('SET_CODE', code),
-    clear: ({ commit }) => commit('SET_CODE')
-  }
-}) */
-
-let store
-import('@/store').then(module => {
-  console.debug('async:', module)
-  store = module.default
-  store.registerModule('verify', {
-    namespaced: true,
-    state: {
-      code: null
-    },
-    mutations: {
-      SET_CODE: (state, code) => (state.code = code)
-    },
-    actions: {
-      set: ({ commit }, code) => commit('SET_CODE', code),
-      clear: ({ commit }) => commit('SET_CODE')
-    }
-  })
-})
+import store from '@/store'
 
 const VERIFY_PATH = '/router/verify'
 const MOCK_CODE = 700000
@@ -54,7 +22,7 @@ function needVerify(route) {
 }
 
 function valid(to, next) {
-  console.debug(2, store)
+  // console.debug(2, store)
   const hasCode = MOCK_CODE === store.state.verify.code
   return hasCode ? next : new Proxy(next, {
     apply(target, thisArg, args) {

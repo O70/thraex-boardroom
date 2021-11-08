@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     handleOk() {
-      console.debug(this.$store)
+      // console.debug(this.$store)
       this.$store.dispatch('verify/set', 700000)
 
       const { query, params } = this.$route

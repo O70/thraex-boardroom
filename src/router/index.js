@@ -21,7 +21,7 @@ export const constantRoutes = [
   {
     path: '/router/verify',
     name: 'RouterVerify',
-    component: () => import('./verify/index'),
+    component: () => import('./verify/sms'),
     hidden: true
   },
 
@@ -51,5 +51,5 @@ export function resetRouter() {
   router.matcher = newRouter.matcher // reset router
 }
 
-import verify from './verify/router'
+import verify from './verify'
 export default verify(router)
