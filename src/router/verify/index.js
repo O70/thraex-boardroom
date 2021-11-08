@@ -22,18 +22,17 @@ function needVerify(route) {
 }
 
 function valid(to, next) {
-  // console.debug(2, store)
   const hasCode = MOCK_CODE === store.state.verify.code
   return hasCode ? next : new Proxy(next, {
     apply(target, thisArg, args) {
-      // console.log('proxyNext1')
-      // console.log(to)
-      // console.log('***************')
-      return Reflect.apply(target, thisArg, [{ path: VERIFY_PATH, query: {
-        to: to.path,
-        qeury: to.query,
-        params: to.params
-      }}])
+      // Opt: Named routes params
+      const { path, query } = to
+      const newArg = {
+        path: VERIFY_PATH,
+        query: { path, query }
+      }
+
+      return Reflect.apply(target, thisArg, [newArg])
     }
   })
 }

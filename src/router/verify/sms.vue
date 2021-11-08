@@ -12,13 +12,10 @@ export default {
   },
   methods: {
     handleOk() {
-      // console.debug(this.$store)
       this.$store.dispatch('verify/set', 700000)
 
-      const { query, params } = this.$route
-      console.debug(query.to)
-      // this.$router.replace({ path: query.to, query: { hanzo: 'sd' }, params: { gui: 1 } })
-      this.$router.replace({ path: query.to })
+      const { query: { path, query }} = this.$route
+      this.$router.replace({ path, query })
     }
   }
 }
