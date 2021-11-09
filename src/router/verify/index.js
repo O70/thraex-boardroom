@@ -1,7 +1,7 @@
 import store from '@/store'
+import Token from './code'
 
 const VERIFY_PATH = '/router/verify'
-const MOCK_CODE = '700000'
 
 function needVerify(route) {
   const verifys = route.matched.map(({ props }) => {
@@ -22,8 +22,9 @@ function needVerify(route) {
 }
 
 function valid(to, next) {
-  const hasCode = MOCK_CODE === store.state.verify.code
-  return hasCode ? next : new Proxy(next, {
+  console.debug('store.state.verify.code:', store.state.verify.code)
+  // const hasCode = MOCK_CODE === store.state.verify.code
+  return Token.validate() ? next : new Proxy(next, {
     apply(target, thisArg, args) {
       // Opt: Named routes params
       const { path, query } = to

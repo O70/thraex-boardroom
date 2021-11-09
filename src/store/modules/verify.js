@@ -1,13 +1,19 @@
+import Token from '@/router/verify/code'
+
 export default {
   namespaced: true,
-  state: {
-    code: null
-  },
+  state: _ => ({ code: Token.get() }),
   mutations: {
     SET_CODE: (state, code) => (state.code = code)
   },
   actions: {
-    set: ({ commit }, code) => commit('SET_CODE', code),
-    clear: ({ commit }) => commit('SET_CODE')
+    set: ({ commit }, code) => {
+      commit('SET_CODE', code)
+      Token.set(code)
+    },
+    clear: ({ commit }) => {
+      Token.remove()
+      commit('SET_CODE')
+    }
   }
 }

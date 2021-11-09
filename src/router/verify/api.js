@@ -17,7 +17,7 @@ export async function send(phone) {
   console.groupEnd()
 
   // throw new Error('ggg')
-  
+
   // return '700000'
 }
 
