@@ -1,7 +1,7 @@
 import store from '@/store'
 
 const VERIFY_PATH = '/router/verify'
-const MOCK_CODE = 700000
+const MOCK_CODE = '700000'
 
 function needVerify(route) {
   const verifys = route.matched.map(({ props }) => {
