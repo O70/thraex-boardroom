@@ -2,8 +2,6 @@ import Cookies from 'js-cookie'
 import CryptoJS from 'crypto-js'
 import store from '@/store'
 
-const VERIFY_CODE = 'VERIFY-CODE'
-
 class Crypto {
   constructor() {
     const [key, iv] = ['68C14256C489424C', 'B25884CCED0E6181']
@@ -33,6 +31,8 @@ class Crypto {
 }
 
 export const crypto = new Crypto()
+
+const VERIFY_CODE = 'VERIFY-CODE'
 
 const get = _ => Cookies.get(VERIFY_CODE)
 
