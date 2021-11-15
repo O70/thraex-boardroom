@@ -20,23 +20,19 @@ function needVerify(route) {
   return parse(verifys)
 }
 
-function valid(to, next) {
-  return Code.validate() ? next : new Proxy(next, {
-    apply(target, thisArg, args) {
-      // Opt: Named routes params
-      const { path, query } = to
-      const newArg = {
-        path: VERIFY_PATH,
-        query: { path, query }
-      }
-
-      return Reflect.apply(target, thisArg, [newArg])
-    }
-  })
-}
-
 function proxyNext([to, from, next]) {
-  const newNext = needVerify(to) ? valid(to, next) : next
+  let newNext = next
+
+  if (needVerify(to) && !Code.validate()) {
+    // Opt: Named routes params
+    const { path, query } = to
+    const newArg = {
+      path: VERIFY_PATH,
+      query: { path, query }
+    }
+
+    newNext = builder(next, null, _ => [newArg])
+  }
 
   return [to, from, newNext]
 }
