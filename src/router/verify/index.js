@@ -1,5 +1,4 @@
-import store from '@/store'
-import Token from './code'
+import Code from './code'
 
 const VERIFY_PATH = '/router/verify'
 
@@ -22,9 +21,7 @@ function needVerify(route) {
 }
 
 function valid(to, next) {
-  console.debug('store.state.verify.code:', store.state.verify.code)
-  // const hasCode = MOCK_CODE === store.state.verify.code
-  return Token.validate() ? next : new Proxy(next, {
+  return Code.validate() ? next : new Proxy(next, {
     apply(target, thisArg, args) {
       // Opt: Named routes params
       const { path, query } = to

@@ -30,5 +30,6 @@ export async function verify(phone, code) {
   console.debug('Mock request...')
   console.groupEnd()
 
-  return code === '700000'
+  // return code === '700000'
+  return ['700000', '717000'].includes(code)
 }
