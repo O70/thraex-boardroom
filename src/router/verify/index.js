@@ -1,5 +1,23 @@
 import Code from './code'
 
+import('@/store').then(({ default: store }) => store.registerModule('verify', {
+  namespaced: true,
+  state: _ => ({ code: Code.native() }),
+  mutations: {
+    SET_CODE: (state, code) => (state.code = code)
+  },
+  actions: {
+    set: ({ commit }, code) => {
+      commit('SET_CODE', code)
+      Code.set(code)
+    },
+    clear: ({ commit }) => {
+      Code.remove()
+      commit('SET_CODE')
+    }
+  }
+}))
+
 const VERIFY_PATH = '/router/verify'
 
 function needVerify(route) {
