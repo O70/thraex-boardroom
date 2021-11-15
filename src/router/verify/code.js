@@ -44,7 +44,7 @@ export default {
   validate() {
     const native = this.native()
     const code = store.state.verify.code
-    console.debug('compare:', native, code)
+
     return native && code && native === code
   }
 }

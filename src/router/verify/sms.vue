@@ -33,6 +33,7 @@
   </el-dialog>
 </template>
 <script>
+import { mapActions } from 'vuex'
 import { getPhone, send, verify } from './api'
 
 export default {
@@ -81,6 +82,7 @@ export default {
     })
   },
   methods: {
+    ...mapActions('verify', ['set']),
     handleState(val) {
       this.state = val
     },
@@ -101,7 +103,7 @@ export default {
       if (code) {
         verify(this.phone, code).then(valid => {
           if (valid) {
-            this.$store.dispatch('verify/set', code)
+            this.set(code)
 
             const { query: { path, query }} = this.$route
             this.$router.replace({ path, query })
