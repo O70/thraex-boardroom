@@ -63,7 +63,7 @@ export default {
       if (this.isSent) {
         this.handleTips('验证码已发送到您的手机', 'success')
 
-        this.counter = 60 / 10 / 2
+        this.counter = 60
         const timer = setInterval(() => {
           if (this.counter < 1) {
             clearInterval(timer)
