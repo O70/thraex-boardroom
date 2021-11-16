@@ -4,9 +4,7 @@ import getters from './getters'
 import app from './modules/app'
 import settings from './modules/settings'
 import user from './modules/user'
-
-// Dynamic Module Registration: store.registerModule('verify', {})
-// import verify from './modules/verify'
+import verify from './modules/verify'
 
 Vue.use(Vuex)
 
@@ -14,8 +12,8 @@ const store = new Vuex.Store({
   modules: {
     app,
     settings,
-    user/* ,
-    verify */
+    user,
+    verify
   },
   getters
 })

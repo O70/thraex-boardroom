@@ -1,6 +1,6 @@
 import Code from './code'
 
-import('@/store').then(({ default: store }) => store.registerModule('verify', {
+/* import('@/store').then(({ default: store }) => store.registerModule('verify', {
   namespaced: true,
   state: _ => ({ code: Code.native() }),
   mutations: {
@@ -16,7 +16,7 @@ import('@/store').then(({ default: store }) => store.registerModule('verify', {
       commit('SET_CODE')
     }
   }
-}))
+})) */
 
 const VERIFY_PATH = '/router/verify'
 
