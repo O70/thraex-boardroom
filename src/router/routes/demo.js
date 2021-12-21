@@ -11,6 +11,12 @@ export default [
         name: 'DemoSockJS',
         component: () => import('@/views/demo/sockjs'),
         meta: { title: 'SockJS' }
+      },
+      {
+        path: 'uploads',
+        name: 'DemoUpload',
+        component: () => import('@/views/demo/uploads'),
+        meta: { title: 'Uploads' }
       }
     ]
   }

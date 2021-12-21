@@ -24,6 +24,22 @@ module.exports = {
       warnings: false,
       errors: true
     },
+    proxy: {
+      '/dev-api/api/thraex/upload': {
+        target: 'http://localhost:8037',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/dev-api/api/thraex/upload': '/upload'
+        }
+      },
+      '/api/thraex/upload': {
+        target: 'http://localhost:8037',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api/thraex/upload': '/upload'
+        }
+      }
+    },
     before: require('./mock/mock-server.js')
   },
   configureWebpack: {
